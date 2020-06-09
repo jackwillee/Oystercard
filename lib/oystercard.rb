@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Oystercard
-  MAXIMUM_BALANCE = 1000
+  MAXIMUM_BALANCE = 50
   attr_reader :balance
 
   def initialize
@@ -9,6 +9,7 @@ class Oystercard
   end
 
   def top_up(amount)
+    fail "Maximum balance of #{MAXIMUM_BALANCE} exceeded" if amount + balance > MAXIMUM_BALANCE
     @balance += amount
   end
 end
